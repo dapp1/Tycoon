@@ -31,6 +31,7 @@ public class ProgressBar : MonoBehaviour
 
     private IEnumerator FillProgressBar()
     {
+        _fillImage.gameObject.SetActive(true);
         OnProgressStart?.Invoke();
         _elapsedTime = 0;
 
@@ -44,6 +45,7 @@ public class ProgressBar : MonoBehaviour
         _elapsedTime = _totalDuration;
         UpdateProgressBar();
         OnProgressComplete?.Invoke();
+        _fillImage.gameObject.SetActive(false);
     }
 
     private void UpdateProgressBar()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuildingConfig : ScriptableObject
 {
     [SerializeField] private BuildingLevel[] _levels;
-
+    
     public BuildingLevel GetLevelConfig(int level)
     {
         if (level < 0 || level >= _levels.Length)
