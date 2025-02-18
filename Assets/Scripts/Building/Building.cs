@@ -13,17 +13,13 @@ public class Building : MonoBehaviour
     public event Action<int> OnLevelChanged;
 
     private ResourceManager _resourceManager;
-    
+
+    private void Awake() => GameContext.Container.InjectDependencies(this);
+
     [Inject]
     public void Construct(ResourceManager resourceManager)
     {
         _resourceManager = resourceManager;
-    }
-    
-    [ContextMenu("Init")]
-    public void Init()
-    {
-        GameContext.Container.InjectDependencies(this);
         
         _configByLevel = _config.GetLevelConfig(_currentLevel);
         _progressBar.Initialize(_configByLevel.ProductionTime);

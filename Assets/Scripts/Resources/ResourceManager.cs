@@ -5,10 +5,10 @@ using UnityEngine;
 
 public enum CurrencyType { Coin, Gem }
 
-public class ResourceManager : MonoBehaviour, IInitializable
+public class ResourceManager : MonoBehaviour
 {
     [SerializeField] private Currency[] _currency;
-
+    
     public Currency GetResource(CurrencyType type)
     {
         return _currency.FirstOrDefault(currency => currency.Type == type);
