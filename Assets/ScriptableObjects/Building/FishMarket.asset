@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063f2818e4ff4a446a921a93a7eb02cd, type: 3}
   m_Name: FishMarket
   m_EditorClassIdentifier: 
-  _levels:
-  - _productionTime: 4
-    _productionCount: 4
-  - _productionTime: 3
-    _productionCount: 3
-  - _productionTime: 2
-    _productionCount: 2
-  - _productionTime: 1
-    _productionCount: 1
+  _id: fish_market
+  _defaultRevenue: 10
+  _defaultProductionSpeed: 4
+  _revenueMultiplier: 1.03
+  _productionSpeedMultiplier: 1.05
+  _upgradeValues:
+    _revenueUpgradeCost: 10
+    _workersUpgradeCost: 50
+    _speedUpgradeCost: 10
+    _revenueUpgradeMultiplier: 1.035
+    _levelUpgradeMultiplier: 1.05
+    _speedUpgradeMultiplier: 1.032

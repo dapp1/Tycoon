@@ -1,43 +1,56 @@
 using System;
 using System.Linq;
+using SaveSystem;
 using TMPro;
 using UnityEngine;
-
-public enum CurrencyType { Coin, Gem }
+using UnityEngine.Events;
 
 public class ResourceManager : MonoBehaviour
 {
     [SerializeField] private Currency[] _currency;
     
-    public Currency GetResource(CurrencyType type)
+    [Inject] private DataAccessService _accessService;
+
+    private void Awake()
     {
-        return _currency.FirstOrDefault(currency => currency.Type == type);
+        GameContext.InjectDependencies(this);
+    }
+
+    public void Start()
+    {
+        foreach (Currency currency in _currency)
+        {
+            CurrencyData data = _accessService.GetCurrencyData(currency.Type);
+            currency.Init(data);
+        }
+    }
+    
+    public Currency GetResource(string id)
+    {
+        return _currency.FirstOrDefault(currency => currency.Type == id);
     }
 }
 
 [Serializable]
 public class Currency
 {
-    [SerializeField] private CurrencyType _type;
+    [SerializeField] private string _type;
     [SerializeField] private TextMeshProUGUI _textCount;
-
-    private int _currentCount;
     
-    public event Action<int> OnCountChanged;
+    public string Type => _type;
+    private CurrencyData _currencyData;
     
-    public int Count => _currentCount;
-    public CurrencyType Type => _type;
-
-    public void AddCurrencyValue(int value)
+    public void Init(CurrencyData currencyData)
     {
-        _currentCount += value;
-        UpdateText();
-        OnCountChanged?.Invoke(_currentCount);
+        currencyData.OnChange += UpdateText;
+        UpdateText(currencyData.count);
     }
 
-    private void UpdateText()
+    private void UpdateText(int count)
     {
         if (_textCount != null)
-            _textCount.text = _currentCount.ToString();
+        {
+            _textCount.text = count.ToString();
+        }
     }
 }

@@ -13,16 +13,14 @@ public class ProgressBar : MonoBehaviour
     private float _progress;
     private float _totalDuration;
     private float _elapsedTime;
-
-    public event Action OnProgressStart;
+    
     public event Action OnProgressComplete;
     
     public void Initialize(float duration)
     {
         _totalDuration = duration;
     }
-
-    [ContextMenu("StartFiling")]
+    
     public void StartFilling()
     {
         StopAllCoroutines();
@@ -31,10 +29,12 @@ public class ProgressBar : MonoBehaviour
 
     private IEnumerator FillProgressBar()
     {
+        yield return null;
+        
         _fillImage.gameObject.SetActive(true);
-        OnProgressStart?.Invoke();
         _elapsedTime = 0;
-
+        _progress = 0;
+        
         while (_elapsedTime < _totalDuration)
         {
             yield return new WaitForSeconds(_updateInterval);

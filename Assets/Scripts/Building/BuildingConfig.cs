@@ -4,25 +4,62 @@ using UnityEngine;
 [CreateAssetMenu(fileName = nameof(BuildingConfig), menuName = "Configs/" + nameof(BuildingConfig))]
 public class BuildingConfig : ScriptableObject
 {
-    [SerializeField] private BuildingLevel[] _levels;
+    [Header("Default settings")]
+    [SerializeField] private string _id;
+    [SerializeField] private float _defaultRevenue;
+    [SerializeField] private float _defaultProductionSpeed;
     
-    public BuildingLevel GetLevelConfig(int level)
-    {
-        if (level < 0 || level >= _levels.Length)
-        {
-            throw new ArgumentOutOfRangeException(nameof(level), "Level is out of range.");
-        }
+    [Header("Multipliers")]
+    [SerializeField] private float _revenueMultiplier;
+    [SerializeField] private float _productionSpeedMultiplier;
+    
+    [Header("Upgrade")]
+    [SerializeField] private UpgradeValues _upgradeValues;
 
-        return _levels[level];
+    private int[] _boosts = new[] { 1, 1, 1, 2, 2, 2, 2, 2 };
+    
+    public string BuildingID => _id;
+    public UpgradeValues Upgrades => _upgradeValues;
+    public float SpeedUpgradeMultiplierInPercent => (_productionSpeedMultiplier - 1) * 100;
+    
+    public int CalculateRevenue(int revenueLevel)
+    {
+        return (int)((_defaultRevenue * Mathf.Pow(_revenueMultiplier, revenueLevel)));
     }
-    
-    [Serializable]
-    public struct BuildingLevel
-    {
-        [SerializeField] private int _productionTime;
-        [SerializeField] private int _productionCount;
 
-        public int ProductionTime => _productionTime;
-        public int ProductionCount => _productionCount;
+    public float CalculateSpeed(int prodSpeedLevel)
+    {
+        return _defaultProductionSpeed / Mathf.Pow(_productionSpeedMultiplier, prodSpeedLevel);
+    }
+
+    [Serializable]
+    public struct UpgradeValues
+    {
+        [Header("Upgrade Cost")]
+        [SerializeField] private float _revenueUpgradeCost;
+        [SerializeField] private float _workersUpgradeCost;
+        [SerializeField] private float _speedUpgradeCost;
+    
+        [Header("Upgrade Multiplier")]
+        [SerializeField] private float _revenueUpgradeMultiplier;
+        [SerializeField] private float _levelUpgradeMultiplier;
+        [SerializeField] private float _speedUpgradeMultiplier;
+        
+        
+        public int CalculateUpgradeRevenueCost(int currentRevenueLevel)
+        {
+            return (int)(_revenueUpgradeCost * Mathf.Pow(_revenueUpgradeMultiplier, currentRevenueLevel));
+        }
+        
+        public int CalculateUpgradeWorkersCost(int currentWorkersCount)
+        {
+            return (int)(_workersUpgradeCost * Mathf.Pow(_levelUpgradeMultiplier, currentWorkersCount));
+        }
+        
+        public int CalculateUpgradeSpeedCost(int currentSpeedLevel)
+        {
+            return (int)(_speedUpgradeCost * Mathf.Pow(_speedUpgradeMultiplier, currentSpeedLevel));
+        }
     }
 }
+
