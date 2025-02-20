@@ -1634,6 +1634,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5777155373881978009}
+  - component: {fileID: 5538640148843350985}
+  - component: {fileID: 8297891137491155038}
+  - component: {fileID: 2766098728105010981}
   m_Layer: 0
   m_Name: Weapon_Market_with_objects
   m_TagString: Untagged
@@ -1660,6 +1663,61 @@ Transform:
   - {fileID: 3070510579409021170}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5538640148843350985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881795171969133157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2509a80025616541bfbba203d80624b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: aa8a512c70bd310488f4be522aafd4b8, type: 2}
+  _progressBar: {fileID: 0}
+  _levelVisual:
+  - {fileID: 4031988310388123559}
+  - {fileID: 165000763739314360}
+  - {fileID: 926142035124694946}
+  _clickHandler: {fileID: 2766098728105010981}
+--- !u!65 &8297891137491155038
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881795171969133157}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.666861, y: 4.2793345, z: 5.406852}
+  m_Center: {x: 0.3334317, y: 1.6340978, z: 0.20342731}
+--- !u!114 &2766098728105010981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881795171969133157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830dbbda31924b04080cb7417fd83df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1964960561714145880
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class ClickableObject : MonoBehaviour
 {
     public UnityEvent OnClick;
-
+    
     private void OnMouseUp()
     {
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())

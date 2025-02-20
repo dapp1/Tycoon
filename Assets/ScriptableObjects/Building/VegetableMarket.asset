@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 063f2818e4ff4a446a921a93a7eb02cd, type: 3}
-  m_Name: FishMarket
+  m_Name: VegetableMarket
   m_EditorClassIdentifier: 
-  _id: fish_market
+  _id: vegetables_market
   _defaultRevenue: 10
   _defaultProductionSpeed: 4
   _revenueMultiplier: 1.03
@@ -25,8 +25,7 @@ MonoBehaviour:
     _levelUpgradeMultiplier: 1.05
     _speedUpgradeMultiplier: 1.032
   _uiValues:
-    _name: Fish Market
-    _description: "This fish is still floating in the river today, you won\u2019t
-      find anything fresher"
-    _productName: Silver carp
-    _icon: {fileID: 21300000, guid: 720ac4fdbef3a144cb48fa9a4e18f746, type: 3}
+    _name: Vegetables Market
+    _description: Fragrant and healthy vegetables only from the garden
+    _productName: Clever
+    _icon: {fileID: 21300000, guid: 7524ab7a7f453474dbfc0e05e8b92539, type: 3}

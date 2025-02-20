@@ -16,10 +16,15 @@ public class BuildingConfig : ScriptableObject
     [Header("Upgrade")]
     [SerializeField] private UpgradeValues _upgradeValues;
 
+    [Header("UI")] 
+    [SerializeField] private BuildingUIValues _uiValues;
+
     private int[] _boosts = new[] { 1, 1, 1, 2, 2, 2, 2, 2 };
     
     public string BuildingID => _id;
+    
     public UpgradeValues Upgrades => _upgradeValues;
+    public BuildingUIValues UIValues => _uiValues;
     public float SpeedUpgradeMultiplierInPercent => (_productionSpeedMultiplier - 1) * 100;
     
     public int CalculateRevenue(int revenueLevel)
@@ -60,6 +65,19 @@ public class BuildingConfig : ScriptableObject
         {
             return (int)(_speedUpgradeCost * Mathf.Pow(_speedUpgradeMultiplier, currentSpeedLevel));
         }
+    }
+
+    [Serializable]
+    public struct BuildingUIValues
+    {
+        [SerializeField] private string _name;
+        [SerializeField] private string _description;
+        [SerializeField] private string _productName;
+        [SerializeField] private Sprite _icon;
+        public string BuildingName => _name;
+        public string BuildingDescription => _description;
+        public string ProductName => _productName;
+        public Sprite Icon => _icon;
     }
 }
 

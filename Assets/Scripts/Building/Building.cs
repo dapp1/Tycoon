@@ -35,12 +35,7 @@ public class Building : MonoBehaviour
         
         _clickHandler.OnClick.AddListener(InitUpgradeWindow);
         _progressBar.OnProgressComplete += IncreaseCoins;
-        _progressBar.OnProgressComplete += StartProducing;
-    }
-
-    private void Start()
-    {
-        StartProducing();
+        _progressBar.OnProgressComplete += CheckForStartProduction;
     }
 
     private void IncreaseCoins()
@@ -53,20 +48,27 @@ public class Building : MonoBehaviour
 
     private void UpdateWorkersCount(int workersCount)
     {
-        for (var i = 0; i < workersCount + 1; i++)
+        _currentWorkersCount = workersCount;
+        
+        for (var i = 0; i < _levelVisual.Length; i++)
         {
             if (_currentWorkersCount < 0 || _currentWorkersCount >= _levelVisual.Length)
                 throw new ArgumentOutOfRangeException(nameof(_currentWorkersCount), "Level is out of range.");
         
-            _levelVisual[i].SetActive(true);
+            _levelVisual[i].SetActive(i < workersCount);
         }
+
+        CheckForStartProduction();
     }
     
     private void ChangeProductionSpeed(int level) 
         => _progressBar.Initialize(_config.CalculateSpeed(_buildingInfoData.produceSpeedLevel));
     
-    public void StartProducing()
+    public void CheckForStartProduction()
     {
-        _progressBar.StartFilling();
+        // _progressBar.gameObject.SetActive(_currentWorkersCount > 0);
+        
+        if(_currentWorkersCount > 0)
+            _progressBar.StartFilling();
     }
 }
