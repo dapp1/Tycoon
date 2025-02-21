@@ -16,21 +16,17 @@ public class WorkersInBuildingUpgrade : UpgradeModule
         buildingData.OnWorkersCountChanged += UpdateProgress;
         UpdateProgress(buildingData.workers);
     }
-
-    protected override void UpdateUpgradeButton(int value)
+    
+    protected override void UpdateUpgradeButton(int coinsValue)
     {
         _upgradeCostValue = buildingConfig.Upgrades.CalculateUpgradeWorkersCost(buildingData.workers);
-        base.UpdateUpgradeButton(value);
-
-        if (buildingData.workers >= 3)
-        {
-            _maxCount.gameObject.SetActive(true);
-            _button.gameObject.SetActive(false);
-        }
+        base.UpdateUpgradeButton(coinsValue);
     }
 
     protected override void IncreaseLevel()
     {
+        if(buildingData.workers >= 3) return;
+        
         if (_currencyData.TryDecreaseCoinsCount(_upgradeCostValue))
         {
             buildingData.IncreaseWorkersCount();
@@ -41,5 +37,13 @@ public class WorkersInBuildingUpgrade : UpgradeModule
     protected override void UpdateProgress(int level)
     {
         _workersCount.text = $"{level}/3";
+        _maxCount.gameObject.SetActive(level >= 3);
+        _button.gameObject.SetActive(level < 3);
+    }
+    
+    public override void OnClose()
+    {
+        base.OnClose();
+        buildingData.OnWorkersCountChanged += UpdateProgress;
     }
 }

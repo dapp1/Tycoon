@@ -5,13 +5,24 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(BoxCollider))]
 public class ClickableObject : MonoBehaviour
 {
-    public UnityEvent OnClick;
+    [SerializeField] private Camera _camera;
     
+    public UnityEvent OnClick;
+
     private void OnMouseUp()
     {
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
+        
+        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-        OnClick?.Invoke();
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            // Проверка, что клик был на текущем объекте
+            if (hit.collider.gameObject == gameObject)
+            {
+                OnClick?.Invoke();
+            }
+        }
     }
 }

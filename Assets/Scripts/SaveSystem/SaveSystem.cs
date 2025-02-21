@@ -21,8 +21,8 @@ namespace SaveSystem
                 {
                     currencyData = new List<CurrencyData>
                     {
-                        new() { type = "coins", count = 0 },
-                        new() { type = "gems", count = 0 }
+                        new() { type = "coins", count = 10000 },
+                        new() { type = "gems", count = 100 }
                     },
                     buildingData = new List<BuildingInfoData>()
                 };

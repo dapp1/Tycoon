@@ -32,9 +32,10 @@ public class RevenueUpgrade : UpgradeModule
     
         _currentLevel.text = level.ToString();
         _nextLevel.text = buildingData.revenueLevel == _levels[^1] ? "Max" : nextLevel.ToString();
-        _revenue.text = buildingConfig.CalculateRevenue(level).ToString();
+        _revenue.text = buildingConfig.CalculateRevenue(level).ToString("F2");
         
         _progressBar.fillAmount = (float)(level - prevLevel) / (nextLevel - prevLevel);
+        _button.interactable = buildingData.revenueLevel < _levels[^1];
 
         return;
 

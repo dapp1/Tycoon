@@ -30,6 +30,8 @@ public class UpgradeManager : MonoBehaviour
     private void CloseWindow()
     {
         _revenueUpgrade.OnClose();
+        _workersProgress.OnClose();
+        _productionTimeUpgrade.OnClose();
         _upgradeWindow.gameObject.SetActive(false);
     }
 

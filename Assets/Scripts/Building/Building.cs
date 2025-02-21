@@ -40,7 +40,7 @@ public class Building : MonoBehaviour
 
     private void IncreaseCoins()
     {
-        int value = _config.CalculateRevenue(_buildingInfoData.revenueLevel);
+        int value = (int)_config.CalculateRevenue(_buildingInfoData.revenueLevel);
         _currencyData.IncreaseCoinsCount(value);
     }
     

@@ -27,9 +27,9 @@ public class BuildingConfig : ScriptableObject
     public BuildingUIValues UIValues => _uiValues;
     public float SpeedUpgradeMultiplierInPercent => (_productionSpeedMultiplier - 1) * 100;
     
-    public int CalculateRevenue(int revenueLevel)
+    public float CalculateRevenue(int revenueLevel)
     {
-        return (int)((_defaultRevenue * Mathf.Pow(_revenueMultiplier, revenueLevel)));
+        return (_defaultRevenue * Mathf.Pow(_revenueMultiplier, revenueLevel));
     }
 
     public float CalculateSpeed(int prodSpeedLevel)

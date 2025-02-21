@@ -2,62 +2,61 @@
 
 public class CameraController : MonoBehaviour
 {
-    public Transform cameraTransform;
+    [Header("Links")] 
+    [SerializeField] private Camera _camera;
+    
+    [Header("Movement Settings")]
+    [SerializeField] private float moveSpeed = 10f;     
+    [SerializeField] private float scrollSpeed = 10f;
+    [SerializeField] private float minZoom = 5f;
+    [SerializeField] private float maxZoom = 50f;
+    
+    [Header("Borders")]
+    [SerializeField] private float xMin = -1000f;
+    [SerializeField] private float xMax = 1150f; 
+    [SerializeField] private float zMin = -1150f; 
+    [SerializeField] private float zMax = 1150f; 
+    
+    [Header("Camera Rotation")]
+    [SerializeField] private float rotationSpeed = 50f; 
 
-    [SerializeField] private float _camSpeed = 1f; //Speed of the camera
-    [SerializeField] private float _camSpeedFast = 5f; //Speed of the camera while holding "Fast camera movement button"
-
-    [SerializeField] private float _camMovementSpeed = 1f;
-    [SerializeField] private float _camSmoothness = 10f;
-
-    [SerializeField] private float _camRotationAmount = 1f;
-    [SerializeField] private float _camBorderMovement = 5f;
-
-    [SerializeField] private float _maxCamZoom = 30f;
-    [SerializeField] private float _minCamZoom = 100f;
-
-    [SerializeField] private float _minZCamMovement = 100f;
-    [SerializeField] private float _maxZCamMovement = 900f;
-    [SerializeField] private float _minXCamMovement = 100f;
-    [SerializeField] private float _maxXCamMovement = 900f;
-
-    [SerializeField] private bool cursorVisible = true;
-
-    public Vector3 zoomAmount;
-
-    public Vector3 newPosition;
-    public Quaternion newRotation;
-    public Vector3 newZoom;
-
-    //MouseMovement
-    public Vector3 rotateStartPosition;
-    public Vector3 rotateCurrentPosition;
-
-    Vector2 pos1;
-    Vector2 pos2;
-
-    // Start is called before the first frame update
-    void Start()
+    private void FixedUpdate()
     {
-        newPosition = transform.position;
-        newRotation = transform.rotation;
-        newZoom = cameraTransform.localPosition;
+        MoveCamera();
+        ZoomCamera();
+        RotateCamera();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void MoveCamera()
     {
-        HandleMovementInput();
-        HandleMouseInput();
-    }
-
-    private void HandleMouseInput()
-    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
         
+        Vector3 moveDirection = new Vector3(-horizontalInput, 0, -verticalInput) * moveSpeed * Time.fixedDeltaTime;
+        
+        transform.Translate(moveDirection, Space.World);
+        
+        Vector3 clampedPosition = transform.position;
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, xMin, xMax);
+        clampedPosition.z = Mathf.Clamp(clampedPosition.z, zMin, zMax);
+        transform.position = clampedPosition;
     }
 
-    void HandleMovementInput()
+
+    private void ZoomCamera()
     {
+        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+        _camera.fieldOfView -= scrollInput * scrollSpeed;
         
+        _camera.fieldOfView = Mathf.Clamp(_camera.fieldOfView, minZoom, maxZoom);
+    }
+
+    private void RotateCamera()
+    {
+        if (Input.GetMouseButton(1))
+        {
+            float rotationInput = Input.GetAxis("Mouse X");
+            transform.Rotate(0, rotationInput * rotationSpeed * Time.deltaTime, 0);
+        }
     }
 }
