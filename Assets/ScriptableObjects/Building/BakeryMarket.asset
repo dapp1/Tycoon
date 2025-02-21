@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: BakeryMarket
   m_EditorClassIdentifier: 
   _id: bakery_market
-  _defaultRevenue: 10
-  _defaultProductionSpeed: 4
+  _defaultRevenue: 20
+  _defaultProductionSpeed: 7
   _revenueMultiplier: 1.03
-  _productionSpeedMultiplier: 1.05
+  _productionSpeedMultiplier: 1.01
   _upgradeValues:
-    _revenueUpgradeCost: 10
-    _workersUpgradeCost: 50
+    _revenueUpgradeCost: 20
+    _workersUpgradeCost: 500
     _speedUpgradeCost: 10
-    _revenueUpgradeMultiplier: 1.035
-    _levelUpgradeMultiplier: 1.05
-    _speedUpgradeMultiplier: 1.032
+    _revenueUpgradeMultiplier: 1.02
+    _levelUpgradeMultiplier: 1.35
+    _speedUpgradeMultiplier: 1.05
   _uiValues:
     _name: Bakery
     _description: Fresh baked goods straight from the oven, get there while it's

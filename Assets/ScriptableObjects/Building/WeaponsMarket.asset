@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: WeaponsMarket
   m_EditorClassIdentifier: 
   _id: weapons_market
-  _defaultRevenue: 10
-  _defaultProductionSpeed: 4
+  _defaultRevenue: 100
+  _defaultProductionSpeed: 10
   _revenueMultiplier: 1.03
-  _productionSpeedMultiplier: 1.05
+  _productionSpeedMultiplier: 1.01
   _upgradeValues:
-    _revenueUpgradeCost: 10
-    _workersUpgradeCost: 50
+    _revenueUpgradeCost: 50
+    _workersUpgradeCost: 1000
     _speedUpgradeCost: 10
-    _revenueUpgradeMultiplier: 1.035
-    _levelUpgradeMultiplier: 1.05
-    _speedUpgradeMultiplier: 1.032
+    _revenueUpgradeMultiplier: 1.02
+    _levelUpgradeMultiplier: 1.5
+    _speedUpgradeMultiplier: 1.07
   _uiValues:
     _name: Weapons Market
     _description: Sharpened knives, strong shields, thick armor

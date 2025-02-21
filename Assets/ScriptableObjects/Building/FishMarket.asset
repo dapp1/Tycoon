@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: FishMarket
   m_EditorClassIdentifier: 
   _id: fish_market
-  _defaultRevenue: 10
-  _defaultProductionSpeed: 4
-  _revenueMultiplier: 1.03
-  _productionSpeedMultiplier: 1.05
+  _defaultRevenue: 5
+  _defaultProductionSpeed: 3
+  _revenueMultiplier: 1.02
+  _productionSpeedMultiplier: 1.01
   _upgradeValues:
-    _revenueUpgradeCost: 10
+    _revenueUpgradeCost: 5
     _workersUpgradeCost: 50
     _speedUpgradeCost: 10
-    _revenueUpgradeMultiplier: 1.035
-    _levelUpgradeMultiplier: 1.05
+    _revenueUpgradeMultiplier: 1.025
+    _levelUpgradeMultiplier: 1.2
     _speedUpgradeMultiplier: 1.032
   _uiValues:
     _name: Fish Market

@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: vegetables_market
   _defaultRevenue: 10
-  _defaultProductionSpeed: 4
-  _revenueMultiplier: 1.03
-  _productionSpeedMultiplier: 1.05
+  _defaultProductionSpeed: 5
+  _revenueMultiplier: 1.02
+  _productionSpeedMultiplier: 1.01
   _upgradeValues:
-    _revenueUpgradeCost: 10
-    _workersUpgradeCost: 50
+    _revenueUpgradeCost: 15
+    _workersUpgradeCost: 250
     _speedUpgradeCost: 10
-    _revenueUpgradeMultiplier: 1.035
-    _levelUpgradeMultiplier: 1.05
-    _speedUpgradeMultiplier: 1.032
+    _revenueUpgradeMultiplier: 1.02
+    _levelUpgradeMultiplier: 1.3
+    _speedUpgradeMultiplier: 1.04
   _uiValues:
     _name: Vegetables Market
     _description: Fragrant and healthy vegetables only from the garden
