@@ -21,7 +21,7 @@ public class DataAccessService : MonoBehaviour
             buildData = new()
             {
                 id = id,
-                workers = 1,
+                workers = 0,
                 revenueLevel = 1,
                 produceSpeedLevel = 1
             };

@@ -52,8 +52,8 @@ public class Building : MonoBehaviour
         
         for (var i = 0; i < _levelVisual.Length; i++)
         {
-            if (_currentWorkersCount < 0 || _currentWorkersCount >= _levelVisual.Length)
-                throw new ArgumentOutOfRangeException(nameof(_currentWorkersCount), "Level is out of range.");
+            if (_currentWorkersCount < 0 || _currentWorkersCount - 1 >= _levelVisual.Length)
+                throw new ArgumentOutOfRangeException(gameObject.name, "Level is out of range.");
         
             _levelVisual[i].SetActive(i < workersCount);
         }
@@ -66,7 +66,7 @@ public class Building : MonoBehaviour
     
     public void CheckForStartProduction()
     {
-        // _progressBar.gameObject.SetActive(_currentWorkersCount > 0);
+        _progressBar.gameObject.SetActive(_currentWorkersCount > 0);
         
         if(_currentWorkersCount > 0)
             _progressBar.StartFilling();
