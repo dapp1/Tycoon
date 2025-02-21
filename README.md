@@ -1,5 +1,5 @@
 # **Tycoon**
-
+In total, the test game was completed in 22-24 hours
 # **How to test:**
 1. Use a screen resolution of 1080x2400 or 1080x2340 and the Game window in the editor.
 
@@ -57,3 +57,22 @@ You can improve the amount of production, the speed of production. Each time the
 The more workers are purchased, the more interesting the store will look.
 
 ![image](https://github.com/user-attachments/assets/4841c12e-784f-4175-9200-93bcff4b837a) ![image](https://github.com/user-attachments/assets/2ae8281c-bdaa-4e02-a2ed-fafb9f81c442)
+
+# **Scene Optimization**
+- Lighting
+- Textures
+- Materials
+- Batching
+- Objects in the scene
+
+It was not possible to do this due to the restriction of using only Native Libs - using MeshCombine from AssetStore
+
+![photo_2025-02-21_15-53-16](https://github.com/user-attachments/assets/0a723991-705b-4926-b180-f567f5941c01)
+![image](https://github.com/user-attachments/assets/441f0447-8704-4062-a4d5-c513cce9fb9d)
+
+# **Not enough for a better picture:**
+- Characters behind the counter instead of capsules
+- Smart AI for interacting with buildings
+- Animations for UI using DOTween
+- Particles of receiving coins, improving the level.
+- Bootstrap scenes, loading
