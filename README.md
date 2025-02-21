@@ -76,3 +76,4 @@ It was not possible to do this due to the restriction of using only Native Libs 
 - Animations for UI using DOTween
 - Particles of receiving coins, improving the level.
 - Bootstrap scenes, loading
+- Sounds
