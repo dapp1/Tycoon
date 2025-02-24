@@ -17,8 +17,7 @@ public class ProgressBarFollower : MonoBehaviour
         if (!_targetTransform || !_canvas) return;
         
         Vector3 screenPosition = _camera.WorldToScreenPoint(_targetTransform.position);
-
-        // Устанавливаем позицию прогресс-бара относительно Canvas
+        
         _barTransform.position = screenPosition + new Vector3(additivePositionX, additivePositionY, 0);
     }
 }

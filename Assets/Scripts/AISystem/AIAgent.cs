@@ -24,9 +24,7 @@ public class AIAgent : MonoBehaviour
     }
 
     public void MoveTo(Vector3 position)
-    {
-        _agent.SetDestination(GetValidSpawnPosition(position));
-    }
+        => _agent.SetDestination(GetValidSpawnPosition(position));
 
     private void MoveToRandomPoint()
     {
@@ -43,22 +41,15 @@ public class AIAgent : MonoBehaviour
     }
 
     private Vector3 GetValidSpawnPosition(Vector3 originalPosition, float maxDistance = 100f)
-    {
-        return NavMesh.SamplePosition(originalPosition, out NavMeshHit hit, maxDistance, NavMesh.AllAreas) ? hit.position : originalPosition;
+    { 
+        return NavMesh.SamplePosition(originalPosition, out NavMeshHit hit, maxDistance, NavMesh.AllAreas) 
+            ? hit.position 
+            : originalPosition;
     }
-
+    
     private void PlaceAgentOnNavMesh(Vector3 position)
     {
-        if (_agent.isOnNavMesh)
-        {
-            _agent.Warp(position);
-        }
-        else
-        {
-            if (NavMesh.SamplePosition(position, out NavMeshHit hit, 100f, NavMesh.AllAreas)) 
-            {
-                _agent.Warp(hit.position);
-            }
-        }
+        Vector3 validPosition = _agent.isOnNavMesh ? position : GetValidSpawnPosition(position);
+        _agent.Warp(validPosition);
     }
 }

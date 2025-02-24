@@ -18,7 +18,6 @@ public class ClickableObject : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            // Проверка, что клик был на текущем объекте
             if (hit.collider.gameObject == gameObject)
             {
                 OnClick?.Invoke();

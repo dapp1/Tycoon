@@ -7,8 +7,8 @@ using UnityEngine.Events;
 [Serializable]
 public class SaveData
 {
-    public List<CurrencyData> currencyData = new List<CurrencyData>();
-    public List<BuildingInfoData> buildingData = new List<BuildingInfoData>();
+    public List<CurrencyData> currencyData = new();
+    public List<BuildingInfoData> buildingData = new();
 
     public CurrencyData GetCurrencyData(string id) => currencyData.FirstOrDefault(c => c.type == id);
     

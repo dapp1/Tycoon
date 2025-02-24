@@ -25,15 +25,16 @@ public class Building : MonoBehaviour
         _upgradeManager = upgradeManager;
         
         _currencyData = accessService.GetCurrencyData(DataStrings.Currencies.Coins);
+        
         _buildingInfoData = accessService.GetBuildingData(_config.BuildingID);
         _buildingInfoData.OnWorkersCountChanged += UpdateWorkersCount;
         _buildingInfoData.OnProduceSpeedLevelChanged += ChangeProductionSpeed;
         
         UpdateWorkersCount(_buildingInfoData.workers);
-
-        _progressBar.Initialize(_config.CalculateSpeed(_buildingInfoData.produceSpeedLevel));
         
         _clickHandler.OnClick.AddListener(InitUpgradeWindow);
+        
+        _progressBar.Initialize(_config.CalculateSpeed(_buildingInfoData.produceSpeedLevel));
         _progressBar.OnProgressComplete += IncreaseCoins;
         _progressBar.OnProgressComplete += CheckForStartProduction;
     }

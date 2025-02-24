@@ -26,9 +26,7 @@ public class ResourceManager : MonoBehaviour
     }
     
     public Currency GetResource(string id)
-    {
-        return _currency.FirstOrDefault(currency => currency.Type == id);
-    }
+        => _currency.FirstOrDefault(currency => currency.Type == id);
 }
 
 [Serializable]

@@ -29,7 +29,7 @@ public class RevenueUpgrade : UpgradeModule
     {
         int prevLevel = GetPreviousLevel(level);
         int nextLevel = GetNextLevel(level);
-    
+        
         _currentLevel.text = level.ToString();
         _nextLevel.text = buildingData.revenueLevel == _levels[^1] ? "Max" : nextLevel.ToString();
         _revenue.text = buildingConfig.CalculateRevenue(level).ToString("F2");

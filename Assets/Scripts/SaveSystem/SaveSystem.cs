@@ -8,12 +8,11 @@ namespace SaveSystem
     {
         private static readonly string path = Application.persistentDataPath + "/save.json";
         
-        public static SaveData Initialize()
+        public static void Initialize()
         {
             if (File.Exists(path))
             {
-                Debug.Log(Application.persistentDataPath + "/save.json");
-                return LoadData();
+                LoadData();
             }
             else
             {
@@ -28,8 +27,6 @@ namespace SaveSystem
                 };
 
                 SaveData(data);
-                Debug.Log(Application.persistentDataPath + "/save.json");
-                return data;
             }
         }
 

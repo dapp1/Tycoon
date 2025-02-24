@@ -38,12 +38,15 @@ public class ProductionTimeUpgrade : UpgradeModule
 
     protected override void UpdateProgress(int level)
     {
-        _button.interactable = buildingData.revenueLevel < _maxUpdateLevel;
+        string timeInSeconds = buildingConfig.CalculateSpeed(level).ToString("F2") + "s";
+        string upgradeInSeconds = (int)(buildingData.produceSpeedLevel * buildingConfig.SpeedUpgradeMultiplierInPercent) + "%";
+
         _currentLevel.text = level.ToString();
+        _timeInSeconds.text = timeInSeconds;
+        _upgradeInPercent.text = upgradeInSeconds;
+        
+        _button.interactable = buildingData.revenueLevel < _maxUpdateLevel;
         _progressBar.fillAmount = (float)level / _maxUpdateLevel;
-        _timeInSeconds.text = buildingConfig.CalculateSpeed(level).ToString("F2") + "s";
-        _upgradeInPercent.text =
-            (int)(buildingData.produceSpeedLevel * buildingConfig.SpeedUpgradeMultiplierInPercent) + "%";
     }
     
     public override void OnClose()
